@@ -2,20 +2,66 @@ import os
 import logging
 from ziwenLog import myLogConfig
 
-##Please close result.csv and DataProcess.log before you run this script.##
 
-##################Configuration items are here##############################
+####################################Configuration items are here#################################
 csvFileNeedToBeParsed='./Tables/ds07-Table 1.csv'
-lostRatio=0.8
-crisisThreshold=0.05
+infectionThresholdFile='./InfectionThreshold.csv'
 firstCrisisCountry=['AN']
-############################################################################
+
+#Once a country is infected, it starts to recover in next round.It recovers cureRate per round.##
+#when cureRate*round counter>1, the country is fully recoverd.It will not be infected again.#####
+cureRate=0.3
+
+#################################################################################################
 
 
 
 
 
 ##################Don't change contents below###############################
+class MatrixDataCell():
+    @property
+    def currentStatus(self):
+        return self._currentStatus
+
+    @currentStatus.setter
+    def currentStatus(self,value):
+        if is not isinstance(value,str):
+            raise ValueError('Current status must be a string')
+        elif value not in ['healthy','infected','recovered']:
+            raise ValueError('Wrong current status for the cell')
+        else:
+            self._currentStatus=value
+
+    @property
+    def roundNumber(self):
+        return self._roundNum
+
+    @roundNumber.setter
+    def roundNumber(self,value):
+        if is not isinstance(value,int):
+            raise ValueError('rountNumber must be an int')
+        else:
+            self._roundNum=value
+
+    @property
+    def rowNumber(self):
+        return self._rowNum
+
+    @property
+    def colNumber(self):
+        return self._colNum
+
+    def __init__(self,rowNum,colNum):
+        self._roundNum=1
+        self._rowNum=rowNum
+        self._colNum
+        print ('TBD')
+
+
+
+
+
 def parseCsvFile(fileName):
     with open(fileName,'r') as f:
         myLines=f.readlines()
@@ -30,18 +76,16 @@ def parseCsvFile(fileName):
     totalColCnt=len(myLines[0].strip().split(','))
 
     logger.info('Parse all rows.')
-    dataRowDict={};
+    dataRowDict={}
     for i in range(1,totalRowCnt): #i is the row number -1
         tmpDict={}
         tmpDict['country']=myLines[i].strip().split(',')[0]
         tmpDataList=[]
-        for j in range(1,len(myLines[i].strip().split(','))):
-            tmpDataList.append(int(myLines[i].strip().split(',')[j]))
-        tmpDict['data']=tmpDataList
+        for j in range(1,len(myLines[i].strip().split(','))): tmpDataList.append(int(myLines[i].strip().split(',')[j])) tmpDict['data']=tmpDataList
         dataRowDict[i+1]=tmpDict  #dataRowDict[2]->{'country':'AD','data':[0,0,...]}
 
     logger.info('Parse all columns')
-    dataColDict={};
+    dataColDict={}
     for i in range(1,totalColCnt): #i is the col number -1
         tmpDict={}
         tmpDict['country']=myLines[0].strip().split(',')[i]
@@ -139,8 +183,8 @@ if __name__=='__main__':
         f.write('\n')
 
     culmulativeLossPerCountry=[]
-    allAffectedCountriesSoFar=firstCrisisCountry;
-    newlyAffectedCountries=firstCrisisCountry;
+    allAffectedCountriesSoFar=firstCrisisCountry
+    newlyAffectedCountries=firstCrisisCountry
 
     for i in range(1,4):
         thisRoundCrisisCountries=newlyAffectedCountries
