@@ -3,6 +3,8 @@ import scipy.integrate as spi
 import numpy as np
 import pylab as pl
 import random as rd
+import logging
+from ziwenLog import myLogConfig
 
 BETA = 0.8
 GAMMA = 0.2
@@ -19,7 +21,10 @@ I[i2] = 1
 
 scale_free_network = nx.random_graphs.barabasi_albert_graph(N, 1)
 A = nx.to_numpy_matrix(scale_free_network)
-
+myLog=myLogConfig.ConfigMyLog(logFileName='DataProcess',withFolder=False,consoleLevel=logging.INFO,logLevel=logging.DEBUG)
+logger=logging.getLogger(__name__)
+logger.info('A is:')
+logger.info(A)
 
 def diff_eqs(X, t):
     Y = np.zeros(N)
