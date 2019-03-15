@@ -1,10 +1,13 @@
-Thu, 14 Mar 2019 07:21:09 scalefree.py[line:26] INFO: A is:
-Thu, 14 Mar 2019 07:21:09 scalefree.py[line:27] INFO: [[0. 1. 0. ... 0. 0. 0.]
- [1. 0. 1. ... 0. 0. 0.]
+Fri, 15 Mar 2019 10:57:17 tmp.py[line:26] INFO: A is:
+Fri, 15 Mar 2019 10:57:17 tmp.py[line:27] INFO: [[0. 1. 0. ... 0. 0. 1.]
+ [1. 0. 1. ... 1. 0. 0.]
  [0. 1. 0. ... 0. 0. 0.]
  ...
+ [0. 1. 0. ... 0. 0. 0.]
  [0. 0. 0. ... 0. 0. 0.]
- [0. 0. 0. ... 0. 0. 0.]
- [0. 0. 0. ... 0. 0. 0.]]
-Thu, 14 Mar 2019 07:21:27 _base.py[line:2515] DEBUG: update_title_pos
-Thu, 14 Mar 2019 07:21:27 font_manager.py[line:1254] DEBUG: findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/usr/local/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+ [1. 0. 0. ... 0. 0. 0.]]
+Fri, 15 Mar 2019 10:57:34 _base.py[line:2515] DEBUG: update_title_pos
+Fri, 15 Mar 2019 10:57:34 font_manager.py[line:1254] DEBUG: findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/ziwen/.local/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+Fri, 15 Mar 2019 10:57:35 _base.py[line:2515] DEBUG: update_title_pos
+Fri, 15 Mar 2019 10:58:06 _base.py[line:2515] DEBUG: update_title_pos
+Fri, 15 Mar 2019 11:36:34 _base.py[line:2515] DEBUG: update_title_pos

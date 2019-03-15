@@ -26,6 +26,7 @@ logger=logging.getLogger(__name__)
 logger.info('A is:')
 logger.info(A)
 
+
 def diff_eqs(X, t):
     Y = np.zeros(N)
     for i in range(N):

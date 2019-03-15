@@ -13,11 +13,11 @@ I0=10e-3
 InitialSIR = (S0, I0, 0.0)
 
 #function
-def diff_eqs(INPUT,t,k):
+def diff_eqs(INPUT,t):
     S = INPUT[0]
     I = INPUT[1]
     R = INPUT[2]
-    dsdt = - k*beta * S * I
+    dsdt = - beta * S * I
     didt = beta * S * I - gamma * I
     drdt = gamma * I
     return [dsdt,didt,drdt]
@@ -27,8 +27,7 @@ t_start = 0.0; t_end = ND; t_inc = TS
 t_range = np.arange(t_start, t_end+t_inc, t_inc)
 
 #solve ode
-k=1
-result = spi.odeint(diff_eqs,InitialSIR,t_range,args=(k,))
+result = spi.odeint(diff_eqs,InitialSIR,t_range)
 print(result)
 
 #Ploting
